@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "設計書の閲覧ツール",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "specs:dev": "vitepress dev",
+    "specs:build": "vitepress build",
+    "specs:preview": "vitepress preview"
+  },
   "keywords": [],
   "author": "SK-928",
   "license": "MIT",
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.0",
+  "devDependencies": {
+    "vitepress": "2.0.0-alpha.17"
+  }
 }
