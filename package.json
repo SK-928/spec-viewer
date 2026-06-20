@@ -8,6 +8,8 @@
     "specs:preview": "vitepress preview",
     "check": "biome check --changed .",
     "check:fix": "biome check --changed --write .",
+    "check:md": "prettier --check \"**/*.{md,mdx}\"",
+    "format:md": "prettier --write \"**/*.{md,mdx}\"",
     "prepare": "husky"
   },
   "keywords": [],
@@ -15,12 +17,14 @@
   "license": "MIT",
   "packageManager": "pnpm@10.33.0",
   "lint-staged": {
-    "*": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+    "*.{js,ts,json,jsonc,css,vue}": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true",
+    "*.{md,mdx}": "prettier --write"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",
+    "prettier": "3.8.4",
     "vitepress": "2.0.0-alpha.17"
   }
 }
