@@ -13,6 +13,8 @@
     "check:fix": "biome check --changed --write .",
     "format:md": "prettier --write \"**/*.{md,mdx}\"",
     "check:md": "prettier --check \"**/*.{md,mdx}\"",
+    "check:text": "textlint \"specs/**/*.md\"",
+    "check:text:fix": "textlint --fix \"specs/**/*.md\"",
     "prepare": "husky"
   },
   "keywords": [],
@@ -23,6 +25,7 @@
     "*.{js,ts,json,jsonc,css,vue}": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true",
     "*.{md,mdx}": [
       "prettier --write",
+      "textlint --fix",
       "tsx tools/spec-lint/cli.ts"
     ]
   },
@@ -36,6 +39,8 @@
     "prettier": "3.8.4",
     "remark-frontmatter": "^5.0.0",
     "remark-parse": "^11.0.0",
+    "textlint": "^15.7.1",
+    "textlint-rule-prh": "^6.1.0",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "unified": "^11.0.5",
