@@ -1,15 +1,18 @@
 {
   "name": "spec-viewer",
   "version": "1.0.0",
+  "type": "module",
   "description": "設計書の閲覧ツール",
   "scripts": {
     "specs:dev": "vitepress dev",
     "specs:build": "vitepress build",
     "specs:preview": "vitepress preview",
+    "specs:lint": "tsx tools/spec-lint/cli.ts",
+    "specs:lint:check": "tsc --noEmit -p tools/spec-lint/tsconfig.json",
     "check": "biome check --changed .",
     "check:fix": "biome check --changed --write .",
-    "check:md": "prettier --check \"**/*.{md,mdx}\"",
     "format:md": "prettier --write \"**/*.{md,mdx}\"",
+    "check:md": "prettier --check \"**/*.{md,mdx}\"",
     "prepare": "husky"
   },
   "keywords": [],
@@ -18,13 +21,28 @@
   "packageManager": "pnpm@10.33.0",
   "lint-staged": {
     "*.{js,ts,json,jsonc,css,vue}": "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true",
-    "*.{md,mdx}": "prettier --write"
+    "*.{md,mdx}": [
+      "prettier --write",
+      "tsx tools/spec-lint/cli.ts"
+    ]
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.0",
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^26.0.0",
+    "fast-glob": "^3.3.3",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",
     "prettier": "3.8.4",
-    "vitepress": "2.0.0-alpha.17"
+    "remark-frontmatter": "^5.0.0",
+    "remark-parse": "^11.0.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "unified": "^11.0.5",
+    "vfile": "^6.0.3",
+    "vfile-reporter": "^8.1.1",
+    "vite": "7.3.5",
+    "vitepress": "2.0.0-alpha.17",
+    "yaml": "^2.9.0"
   }
 }

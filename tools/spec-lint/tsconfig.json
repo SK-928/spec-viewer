@@ -3,13 +3,13 @@
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "lib": ["ESNext"],
     "strict": true,
     "isolatedModules": true,
     "noEmit": true,
-    "allowImportingTsExtensions": true,
     "skipLibCheck": true,
-    "types": ["vitepress/client"]
+    "allowImportingTsExtensions": true,
+    "types": ["node"]
   },
-  "include": [".vitepress/**/*.ts", ".vitepress/**/*.vue"]
+  "include": ["**/*.ts"]
 }
