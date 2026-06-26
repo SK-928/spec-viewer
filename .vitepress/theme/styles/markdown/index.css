@@ -1,0 +1,11 @@
+/*
+ * Markdown 本文スタイルの要素別 partial を束ねる入口。
+ * 各 partial は自身で @layer sv-markdown { } に属す（同名レイヤーは統合される）。
+ * import 順 = ソース順。特異性で決まるため順序への依存はないが、要素順に並べる。
+ */
+@import "./_headings.css";
+@import "./_text.css";
+@import "./_lists.css";
+@import "./_code.css";
+@import "./_tables.css";
+@import "./_containers.css";

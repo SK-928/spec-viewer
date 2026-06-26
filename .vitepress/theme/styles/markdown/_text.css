@@ -1,0 +1,31 @@
+/* 本文テキスト：段落・リンク・強調・引用・水平線 */
+@layer sv-markdown {
+  .markdown p {
+    margin: 0.8em 0;
+    color: var(--sv-text);
+    line-height: 1.8;
+  }
+  .markdown a {
+    color: var(--sv-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sv-accent-soft);
+  }
+  .markdown a:hover {
+    border-color: var(--sv-accent);
+  }
+  .markdown strong {
+    color: var(--sv-heading);
+    font-weight: 600;
+  }
+  .markdown blockquote {
+    border-left: 3px solid var(--sv-accent-soft);
+    padding-left: 1em;
+    color: var(--sv-subtle);
+    margin: 1.2em 0;
+  }
+  .markdown hr {
+    border: none;
+    border-top: 1px solid var(--sv-border);
+    margin: 2em 0;
+  }
+}

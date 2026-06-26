@@ -6,6 +6,8 @@ This page demonstrates some of the built-in markdown extensions provided by Vite
 
 VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
 
+### Example Code
+
 **Input**
 
 ````md
@@ -78,6 +80,14 @@ This is a dangerous warning.
 
 ::: details
 This is a details block.
+:::
+
+## Note (custom container)
+
+`::: note` is a custom container registered in `config.ts` (VitePress only ships `info`/`tip`/`warning`/`danger`/`details` by default).
+
+::: note
+This is a note. Inline `code`, **bold**, and [links](https://vitepress.dev) work inside.
 :::
 
 ## More

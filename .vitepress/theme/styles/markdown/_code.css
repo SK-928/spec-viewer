@@ -1,0 +1,111 @@
+/* コード：インラインコード + コードブロック（言語ラベル・コピーボタン） */
+@layer sv-markdown {
+  .markdown :not(pre) > code {
+    font-family: var(--sv-font-code);
+    font-size: 0.85em;
+    background: var(--sv-surface);
+    color: var(--sv-accent);
+    padding: 0.12em 0.4em;
+    border-radius: 5px;
+  }
+  .markdown pre {
+    background: var(--sv-code-bg);
+    color: var(--shiki-dark, #e1e4e8);
+    border-radius: 12px;
+    padding: 18px 20px;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.7;
+    margin: 1.2em 0;
+  }
+  .markdown pre code {
+    font-family: var(--sv-font-code);
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: inherit;
+  }
+  /* Shiki は各 span に per-token の --shiki-dark を inline 出力する（dark 系トークンで統一） */
+  .markdown pre code span {
+    color: var(--shiki-dark);
+  }
+
+  /* コードブロックの言語ラベル（div.language-* でラップされる） */
+  .markdown div[class*="language-"] {
+    position: relative;
+    margin: 1.2em 0;
+  }
+  .markdown div[class*="language-"] > pre {
+    margin: 0;
+  }
+  .markdown div[class*="language-"] > .lang {
+    position: absolute;
+    top: 7px;
+    right: 12px;
+    font: 600 11px / 1 var(--sv-font-code);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--sv-subtle);
+    z-index: 2;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+
+  /* コードブロックのコピーボタン（クリックでコピー、.copied でチェック表示） */
+  .markdown div[class*="language-"] > .copy {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    z-index: 3;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--sv-subtle);
+    cursor: pointer;
+    opacity: 0;
+    transition:
+      opacity 0.15s ease,
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+  .markdown div[class*="language-"]:hover > .copy,
+  .markdown div[class*="language-"] > .copy:focus-visible {
+    opacity: 1;
+  }
+  .markdown div[class*="language-"] > .copy:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+  }
+  .markdown div[class*="language-"] > .copy::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    background-color: currentColor;
+    -webkit-mask:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z'/%3E%3C/svg%3E")
+      center / 16px no-repeat;
+    mask:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2z'/%3E%3C/svg%3E")
+      center / 16px no-repeat;
+  }
+  .markdown div[class*="language-"] > .copy.copied {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+    color: #4ade80;
+  }
+  .markdown div[class*="language-"] > .copy.copied::before {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  }
+  /* hover/focus/copied 時は言語ラベルを隠してボタンと重ならないように */
+  .markdown div[class*="language-"]:hover > .copy + .lang,
+  .markdown div[class*="language-"] > .copy:focus-visible + .lang,
+  .markdown div[class*="language-"] > .copy.copied + .lang {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,48 @@
+/*
+ * 変数定義（role 層）。
+ * ユーザーはこのファイルを編集せず、消費者入口（../style.css）で
+ * 同名の変数を unlayered 上書きすれば常に優先される（Cascade Layers）。
+ *
+ * ライトは :root、ダークは VitePress が <html> に付与する .dark で切替。
+ */
+@layer sv-vars {
+  :root {
+    /* フォント（システム fallback 付き。テーマ自体はフォント読み込み不要） */
+    --sv-font-body:
+      "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+      sans-serif;
+    --sv-font-code:
+      "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      monospace;
+
+    /* 色 — ライト */
+    --sv-heading: #0f172a;
+    --sv-text: #334155;
+    --sv-muted: #64748b; /* リストマーカー（ダークでも不変） */
+    --sv-subtle: #64748b; /* blockquote 本文・table th・lang ラベル */
+    --sv-accent: #4f46e5;
+    --sv-accent-soft: #c7d2fe; /* リンク下線・blockquote 左線 */
+    --sv-accent-bar: #7dd3fc; /* h2 左縦棒 */
+    --sv-surface: #f1f5f9; /* インライン code 背景 */
+    --sv-surface-2: #f8fafc; /* table th 背景・custom-block 背景 */
+    --sv-border: #e2e8f0; /* table/hr ボーダー */
+    --sv-code-bg: #0f172a; /* pre 背景（両モードで暗い） */
+    --sv-callout-accent: #8b5cf6; /* note の枠線（再テーマ化しうる唯一の callout） */
+  }
+
+  .dark {
+    /* 色 — ダーク（変わるものだけ） */
+    --sv-heading: #f1f5f9;
+    --sv-text: #cbd5e1;
+    --sv-muted: #64748b;
+    --sv-subtle: #94a3b8;
+    --sv-accent: #a5b4fc;
+    --sv-accent-soft: #4f46e5;
+    --sv-accent-bar: #38bdf8;
+    --sv-surface: #1e293b;
+    --sv-surface-2: #1e293b;
+    --sv-border: #334155;
+    --sv-code-bg: #1e293b;
+    --sv-callout-accent: #a78bfa;
+  }
+}

@@ -1,0 +1,43 @@
+/* 見出し（h2 / h3 / h4）。h2 は左縦棒、h3 は ▼ マーク */
+@layer sv-markdown {
+  .markdown h2 {
+    position: relative;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--sv-heading);
+    letter-spacing: -0.01em;
+    margin: 2.4em 0 0.7em;
+    padding: 0.15em 0 0.15em 0.6em;
+    scroll-margin-top: 90px;
+  }
+  .markdown h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.28em;
+    width: 5px;
+    height: 1.35em;
+    background: var(--sv-accent-bar);
+    border-radius: 3px;
+  }
+  .markdown h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--sv-heading);
+    margin: 1em 0 0.5em;
+    scroll-margin-top: 90px;
+  }
+  .markdown h3::before {
+    content: "▼";
+    color: var(--sv-heading);
+    font-size: 0.75em;
+    margin-right: 0.45em;
+    vertical-align: 0.05em;
+  }
+  .markdown h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sv-heading);
+    margin: 1.4em 0 0.4em;
+  }
+}

@@ -1,0 +1,29 @@
+/* テーブル（table / th / td） */
+@layer sv-markdown {
+  .markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 1.2em 0;
+  }
+  .markdown table th,
+  .markdown table td {
+    border-bottom: 1px solid var(--sv-border);
+    padding: 10px 14px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .markdown table th {
+    background: var(--sv-surface-2);
+    font-weight: 600;
+    color: var(--sv-subtle);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .markdown table td code {
+    font-family: var(--sv-font-code);
+    font-size: 0.85em;
+    color: var(--sv-accent);
+  }
+}
