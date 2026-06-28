@@ -2,8 +2,8 @@
 import { useData } from "vitepress";
 
 // https://vitepress.dev/reference/runtime-api#usedata
+// biome-ignore lint/correctness/noUnusedVariables: site/frontmatter は <template> で使用（biome の Vue テンプレート解析は未対応のため誤検知）
 const { site, frontmatter } = useData();
-console.log(site, frontmatter);
 </script>
 
 <template>
@@ -17,6 +17,8 @@ console.log(site, frontmatter);
   </div>
   <div v-else>
     <a href="/">Home</a>
-    <Content />
+    <article class="markdown">
+      <Content />
+    </article>
   </div>
 </template>

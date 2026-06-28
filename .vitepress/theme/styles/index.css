@@ -1,0 +1,11 @@
+/*
+ * テーマパッケージの入口。
+ * まずレイヤー順を宣言し（早い順 → sv-vars, sv-markdown）、各パーツを読み込む。
+ * この2レイヤーは名前付きレイヤーなので、消費者の unlayered な CSS が常に優先される。
+ *
+ * 注意: @import は CSS 仕様上、他のルールより先に書く必要がある
+ *      （@layer の名前のみ宣言する文は @import より前に置ける）。
+ */
+@layer sv-vars, sv-markdown;
+@import "./vars.css";
+@import "./markdown/index.css";

@@ -1,3 +1,17 @@
-html {
-  font-family: Arial, Helvetica, sans-serif;
-}
+/*
+ * 消費者入口。ポータブルなテーマ本体（styles/）を読み込み、
+ * その下にプロジェクト固有の変数上書きを書く。
+ *
+ * ここに書いた :root 変数は unlayered なので、テーマ本体（sv-vars / sv-markdown
+ * レイヤー内）の同名変数より Cascade Layers の仕様上“常に”優先される。
+ * import 順も詳細度も気にせず、書いた分だけ勝つ。
+ *
+ * 例: アクセント色を変える
+ * :root {
+ *   --sv-accent: #db2777;
+ * }
+ * :root.dark {
+ *   --sv-accent: #f472b6;
+ * }
+ */
+@import "./styles/index.css";

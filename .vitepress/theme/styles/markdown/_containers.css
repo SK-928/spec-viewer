@@ -1,0 +1,124 @@
+/*
+ * コンテナ（::: tip / info / warning / danger / details / note）。
+ * カラーは固定プリセット（hex 直書き）。背景は --sv-surface-2、ボーダーは
+ * --sv-border を共有。note の枠線のみ --sv-callout-accent を参照。
+ * dark は固定カラー（callout 系）だけ上書き。他は vars.css の .dark で変数を切替える。
+ */
+@layer sv-markdown {
+  .markdown .custom-block {
+    margin: 1.3em 0;
+    padding: 0.9em 1.1em;
+    border-left: 4px solid #94a3b8;
+    border-radius: 8px;
+    background: var(--sv-surface-2);
+  }
+  .markdown .custom-block .custom-block-title {
+    font-weight: 700;
+    font-size: 0.82em;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.35em;
+  }
+  .markdown .custom-block > :first-child {
+    margin-top: 0;
+  }
+  .markdown .custom-block > :last-child {
+    margin-bottom: 0;
+  }
+  .markdown .custom-block.tip {
+    border-left-color: #10b981;
+    background: #ecfdf5;
+  }
+  .markdown .custom-block.tip .custom-block-title {
+    color: #047857;
+  }
+  .markdown .custom-block.info {
+    border-left-color: #38bdf8;
+    background: #f0f9ff;
+  }
+  .markdown .custom-block.info .custom-block-title {
+    color: #0369a1;
+  }
+  .markdown .custom-block.warning {
+    border-left-color: #f59e0b;
+    background: #fffbeb;
+  }
+  .markdown .custom-block.warning .custom-block-title {
+    color: #b45309;
+  }
+  .markdown .custom-block.danger {
+    border-left-color: #ef4444;
+    background: #fef2f2;
+  }
+  .markdown .custom-block.danger .custom-block-title {
+    color: #b91c1c;
+  }
+  /* details は <summary> が見出し兼トグル。標準マーカーを消し ▸ を回転させる */
+  .markdown .custom-block.details > summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    font-size: 0.82em;
+    letter-spacing: 0.04em;
+    color: var(--sv-text);
+    margin-bottom: 0.35em;
+  }
+  .markdown .custom-block.details > summary::-webkit-details-marker {
+    display: none;
+  }
+  .markdown .custom-block.details > summary::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 0.5em;
+    color: var(--sv-muted);
+    transition: transform 0.15s ease;
+  }
+  .markdown .custom-block.details[open] > summary::before {
+    transform: rotate(90deg);
+  }
+  .markdown .custom-block.note {
+    border-left-color: var(--sv-callout-accent);
+    background: #f5f3ff;
+  }
+  .markdown .custom-block.note .custom-block-title {
+    color: #6d28d9;
+  }
+
+  /* ---- dark: 固定カラー（callout 系）だけ上書き ---- */
+  .dark .markdown .custom-block.tip {
+    border-left-color: #34d399;
+    background: rgba(16, 185, 129, 0.14);
+  }
+  .dark .markdown .custom-block.tip .custom-block-title {
+    color: #6ee7b7;
+  }
+  .dark .markdown .custom-block.info {
+    border-left-color: #38bdf8;
+    background: rgba(56, 189, 248, 0.14);
+  }
+  .dark .markdown .custom-block.info .custom-block-title {
+    color: #7dd3fc;
+  }
+  .dark .markdown .custom-block.warning {
+    border-left-color: #fbbf24;
+    background: rgba(245, 158, 11, 0.14);
+  }
+  .dark .markdown .custom-block.warning .custom-block-title {
+    color: #fcd34d;
+  }
+  .dark .markdown .custom-block.danger {
+    border-left-color: #f87171;
+    background: rgba(239, 68, 68, 0.14);
+  }
+  .dark .markdown .custom-block.danger .custom-block-title {
+    color: #fca5a5;
+  }
+  .dark .markdown .custom-block.details {
+    border-left-color: #475569;
+  }
+  .dark .markdown .custom-block.note {
+    background: rgba(139, 92, 246, 0.14);
+  }
+  .dark .markdown .custom-block.note .custom-block-title {
+    color: #c4b5fd;
+  }
+}
